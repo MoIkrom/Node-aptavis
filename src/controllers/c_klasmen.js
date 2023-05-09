@@ -14,7 +14,7 @@ module.exports = {
       // const offset = page * limit - limit;
       // const result = await getAllData(offset, limit);
       const result = await getAllData();
-      return wrapper.response(response, result.status, "Success Get Data !", result.data, pagination);
+      return wrapper.response(response, result.status, "Success Get Data !", result.data);
     } catch (error) {
       console.log(error);
       const { status = 500, statusText = "Internal Server Error", error: errorData = null } = error;
