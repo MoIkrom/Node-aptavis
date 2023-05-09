@@ -44,24 +44,38 @@ module.exports = {
           }
         });
     }),
-  // getSupplierbyId: (id) =>
-  //   new Promise((resolve, reject) => {
-  //     supabase
-  //       .from("supplier")
-  //       .select("*")
-  //       .eq("id", id)
-  //       .then((result) => {
-  //         if (!result.error) {
-  //           resolve(result);
-  //         } else {
-  //           reject(result);
-  //         }
-  //       });
-  //   }),
-  createClub: (data) =>
+  getKota: (kota) =>
     new Promise((resolve, reject) => {
       supabase
         .from("club")
+        .select("*")
+        .eq("kota", kota)
+        .then((result) => {
+          if (!result.error) {
+            resolve(result);
+          } else {
+            reject(result);
+          }
+        });
+    }),
+  getKlub: (klub) =>
+    new Promise((resolve, reject) => {
+      supabase
+        .from("club")
+        .select("*")
+        .eq("klub", klub)
+        .then((result) => {
+          if (!result.error) {
+            resolve(result);
+          } else {
+            reject(result);
+          }
+        });
+    }),
+  createClub: (data) =>
+    new Promise((resolve, reject) => {
+      supabase
+        .from("c")
         .insert([data])
         .select()
         .then((result) => {

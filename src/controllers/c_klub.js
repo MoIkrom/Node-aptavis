@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-const { getAllClub, createClub, getCountClub } = require("../models/r_klub");
+const { getAllClub, createClub, getCountClub, getKlub, getKota } = require("../models/r_klub");
 const wrapper = require("../utils/wrapper");
 
 module.exports = {
@@ -40,6 +40,13 @@ module.exports = {
     try {
       const { klub, kota } = request.body;
       const setData = { klub, kota };
+
+      // PROSES PENGECEKAN DUPLIKAT KLUB
+      const checkClub = await getKlub(klub);
+      if (checkClub.data.length > 0) {
+        return wrapper.response(response, 403, "Club Already Exist", null);
+      }
+
       const result = await createClub(setData);
 
       return wrapper.response(response, result.status, "Success Create Club !", result.data);
