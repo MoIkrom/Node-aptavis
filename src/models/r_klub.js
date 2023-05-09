@@ -75,7 +75,7 @@ module.exports = {
   createClub: (data) =>
     new Promise((resolve, reject) => {
       supabase
-        .from("c")
+        .from("club")
         .insert([data])
         .select()
         .then((result) => {

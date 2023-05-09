@@ -51,6 +51,7 @@ module.exports = {
 
       return wrapper.response(response, result.status, "Success Create Club !", result.data);
     } catch (error) {
+      // console.log(error);
       const { status = 500, statusText = "Internal Server Error", error: errorData = null } = error;
       return wrapper.response(response, status, statusText, errorData);
     }
