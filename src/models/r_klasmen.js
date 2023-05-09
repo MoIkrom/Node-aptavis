@@ -29,13 +29,13 @@ module.exports = {
   //         }
   //       });
   //   }),
-  getAllData: (offset, limit) =>
+  getAllData: () =>
     new Promise((resolve, reject) => {
       supabase
         .from("klasmen")
         .select("*")
         .order("created_at", { ascending: false })
-        .range(offset, offset + limit - 1)
+        // .range(offset, offset + limit - 1)
         .then((result) => {
           if (!result.error) {
             resolve(result);

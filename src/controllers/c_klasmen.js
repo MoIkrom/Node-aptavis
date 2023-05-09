@@ -5,14 +5,15 @@ const wrapper = require("../utils/wrapper");
 module.exports = {
   getAllData: async (request, response) => {
     try {
-      let { page, limit } = request.query;
-      page = +page;
-      limit = +limit;
-      const totalData = await getCountData();
-      const totalPage = Math.ceil(totalData / limit);
-      const pagination = { page, totalPage, limit, totalData };
-      const offset = page * limit - limit;
-      const result = await getAllData(offset, limit);
+      // let { page, limit } = request.query;
+      // page = +page;
+      // limit = +limit;
+      // const totalData = await getCountData();
+      // const totalPage = Math.ceil(totalData / limit);
+      // const pagination = { page, totalPage, limit, totalData };
+      // const offset = page * limit - limit;
+      // const result = await getAllData(offset, limit);
+      const result = await getAllData();
       return wrapper.response(response, result.status, "Success Get Data !", result.data, pagination);
     } catch (error) {
       console.log(error);
